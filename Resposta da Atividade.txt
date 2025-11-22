@@ -1,0 +1,48 @@
+a. O seu navegador está rodando a versão 1.0 ou 1.1 do HTTP? Que versão do HTTP está
+sendo rodada no servidor?
+
+R = HTTP/1.1.
+
+b. Que linguagem (se tiver) o seu navegador indica que ele pode aceitar do servidor?
+
+R = pt-BR, pt, en-US, em;
+
+c. Qual é o endereço IP do seu computador? E do servidor gaia.cs.umass.edu?
+
+R = IP DO PC = 192.168.0.100,
+   IP DO GAIA = 128.119.245.12
+
+d. Qual é o código de estado retornado pelo servidor para o seu navegador?
+
+R = 200 OK
+
+e. Quando foi a última alteração feita no arquivo HTML?
+
+R = 22/11/2025 as 13:55
+
+f. Quantos bytes de conteúdo são retornados para o seu navegador?
+
+R = 104 bytes
+
+g. Inspecione o conteúdo da primeira requisição GET do HTTP de seu navegador para o
+servidor. Você viu uma linha com “IF-MODIFIED-SINCE” no GET do HTTP?
+
+R = Não será vista uma linha com IF-MODIFIED-SINCE. Este cabeçalho só é incluído em requisições subsequentes, quando o navegador já possui uma versão em cache e quer saber se ela ainda é válida.
+
+h. Inspecione o conteúdo da resposta do servidor. O servidor retornou o conteúdo do
+arquivo explicitamente? Como isso se observou?
+
+R = Sim, o servidor retornou o conteúdo do arquivo explicitamente. Isso é observado pelo Código de Estado 200 OK e pela presença do cabeçalho Content-Length seguido pelo corpo da mensagem (o código HTML de cinco linhas) no final do pacote de resposta.
+
+i. Agora investigue o conteúdo da segunda requisição GET do HTTP de seu navegador
+para o servidor. Você viu uma linha com “IF-MODIFIED-SINCE” no GET do HTTP? Se
+sim, que informação segue o cabeçalho “IF-MODIFIED-SINCE:”?
+
+R = Sim, você verá a linha IF-MODIFIED-SINCE no cabeçalho da segunda requisição GET.
+A informação que segue este cabeçalho é a data e hora que o servidor forneceu na primeira resposta no campo Last-Modified. Exemplo: If-Modified-Since: Sabado, 22 NOV 2025 13:36:01 GMT
+
+j. Qual é o código de estado do HTTP e a frase retornada do servidor em resposta ao
+segundo GET do HTTP? O servidor explicitamente retornou o conteúdo do arquivo?
+Explique
+
+R = código de estado retornado será 304 Not Modified,Não. O servidor não retorna o conteúdo do arquivo explicitamente. O código 304 Not Modified instrui o navegador a usar a cópia do arquivo que ele já tem em seu cache local. A requisição condicional indica que a cópia em cache não expirou e que a data de última modificação (fornecida no If-Modified-Since) é a mesma da cópia no servidor. Portanto, não é necessário desperdiçar largura de banda enviando o arquivo novamente.
